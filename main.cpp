@@ -3,13 +3,10 @@
 #include "header.h"
 using namespace std;
 
-
 int main() {
-
-
     // Test: Copy method functionality
     try {
-        // Orijinal listeyi oluþtur ve bazý elemanlar ekle
+        // Create the original list and add some elements
         SortedList originalList;
         originalList.insert(1.0);
         originalList.insert(2.0);
@@ -17,11 +14,11 @@ int main() {
         originalList.insert(4.5);
         originalList.insert(5.5);
 
-        // Kopyalanacak listeyi oluþtur ve copy fonksiyonunu çaðýr
+        // Create a new list and copy the original list into it
         SortedList copiedList;
-        copiedList.copy(originalList);  // originalList'i copiedList'e kopyala
+        copiedList.copy(originalList);  // Copy originalList into copiedList
 
-        // Orijinal ve kopya listenin elemanlarýný yazdýr
+        // Print the elements of the original and copied lists
         cout << "Original List: ";
         originalList.print();
         cout << "Copied List: ";
@@ -40,10 +37,10 @@ int main() {
         testList.insert(30.0);
 
         cout << "Trying to access index 5 (out of range):" << endl;
-        float outOfRangeElement = testList.index(5);  // Bu, out-of-range hatasý fýrlatmalý
+        float outOfRangeElement = testList.index(5);  // Should throw out-of-range error
         cout << "ERROR: Index out of range error was not thrown. Accessed element: " << outOfRangeElement << endl;
     } catch (const out_of_range& e) {
-        cout << "Passed out-of-range index test: " << e.what() << endl;  // Beklenen sonuç
+        cout << "Passed out-of-range index test: " << e.what() << endl;  // Expected outcome
     }
 
     // Test: Index method with valid range
@@ -53,12 +50,11 @@ int main() {
         testList.insert(20.0);
         testList.insert(30.0);
 
-        cout << "Accessing valid index 1: " << testList.index(1) << endl;  // Beklenen çýktý: 20.0
+        cout << "Accessing valid index 1: " << testList.index(1) << endl;  // Expected output: 20.0
         cout << "Passed valid index access test." << endl;
     } catch (const exception& e) {
         cout << "ERROR: Valid index access failed - " << e.what() << endl;
     }
-
 
     // Test: Remove method with out-of-range error
     try {
@@ -71,7 +67,7 @@ int main() {
         testList.print();
 
         cout << "\nTrying to remove element at index 5 (out of range):" << endl;
-        testList.remove(5);  // This should throw an out-of-range error
+        testList.remove(5);  // Should throw out-of-range error
         cout << "ERROR: Index out of range error was not thrown for remove." << endl;
     } catch (const out_of_range& e) {
         cout << "Passed out-of-range remove test: " << e.what() << endl;  // Expected outcome
@@ -88,7 +84,7 @@ int main() {
         testList.print();
 
         cout << "\nRemoving element at index 1 (should be 20.0):" << endl;
-        float removedElement = testList.remove(1);  // Should remove this element
+        float removedElement = testList.remove(1);  // Should remove the element at index 1
         cout << "Removed element: " << removedElement << endl;
         cout << "List after removal: ";
         testList.print();
@@ -108,7 +104,7 @@ int main() {
         testList.print();
 
         cout << "\nTrying to find 40.0 (not in the list):" << endl;
-        size_t index = testList.find(40.0);  // Should throw a domain_error
+        size_t index = testList.find(40.0);  // Should throw domain_error
         cout << "ERROR: Non-existent element error was not thrown. Found at index: " << index << endl;
     } catch (const domain_error& e) {
         cout << "Passed non-existent element find test: " << e.what() << endl;  // Expected outcome
@@ -156,13 +152,11 @@ int main() {
             testList.insert(static_cast<float>(i));
         }
         cout << "\nTrying to insert another element after reaching max capacity (should throw length_error):" << endl;
-        testList.insert(50.0);  // This should throw a length_error
+        testList.insert(50.0);  // Should throw length_error
         cout << "ERROR: Length error was not thrown for exceeding max capacity." << endl;
     } catch (const length_error& e) {
         cout << "Passed max capacity insertion test: " << e.what() << endl;  // Expected outcome
     }
 
     return 0;
-
 }
-
