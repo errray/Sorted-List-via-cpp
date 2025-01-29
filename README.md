@@ -1,6 +1,7 @@
 # Sorted-List-via-cpp
 
-IMPORTANT! : Programming assignment is given as as ............pdf .
+IMPORTANT! : Programming assignment is given as as EE441 - Programming Assignment 1 (7).pdf
+ .
 
 This project contains the implementation of a SortedList class and accompanying test cases to verify its functionality. The code  demonstrates the use of dynamic arrays, exception handling, and various list operations.
 
